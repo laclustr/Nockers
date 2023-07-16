@@ -10,6 +10,7 @@ ScriptsOnlyBuild:
     - InputManager
     - LoadSceneButton
     - MenuButton
+    - MusicController
     - NPCCarManager
     - NPCVehicle
     - ObjectiveTracker
@@ -85,14 +86,17 @@ ScriptsOnlyBuild:
     fullTypeName: DisableControlsImage
     methodName: EnableImage
   - assembly: Assembly-CSharp
-    fullTypeName: ButtonController
-    methodName: LoadSampleScene
-  - assembly: Assembly-CSharp
     fullTypeName: PlayButton
     methodName: LoadSampleScene
   - assembly: Assembly-CSharp
     fullTypeName: CursorHider
     methodName: LoadSampleScene
+  - assembly: Assembly-CSharp
+    fullTypeName: ButtonController
+    methodName: LoadSampleScene
+  - assembly: Assembly-CSharp
+    fullTypeName: MusicController
+    methodName: PlaySecondSong
   - assembly: Assembly-CSharp
     fullTypeName: DisableControlsImage
     methodName: EnableImage
@@ -156,21 +160,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3942}
     - Class: 114
-      Script: {instanceID: 4974}
+      Script: {instanceID: 4976}
     - Class: 114
-      Script: {instanceID: 5086}
+      Script: {instanceID: 5088}
     - Class: 114
-      Script: {instanceID: 5224}
+      Script: {instanceID: 5226}
     - Class: 114
-      Script: {instanceID: 5232}
+      Script: {instanceID: 5234}
     - Class: 114
-      Script: {instanceID: 5524}
+      Script: {instanceID: 5526}
     - Class: 114
-      Script: {instanceID: 5670}
+      Script: {instanceID: 5672}
     - Class: 114
-      Script: {instanceID: 5984}
+      Script: {instanceID: 5986}
     - Class: 114
-      Script: {instanceID: 23830}
+      Script: {instanceID: 6964}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -202,6 +206,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -225,23 +233,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4288}
     - Class: 114
-      Script: {instanceID: 4974}
+      Script: {instanceID: 4956}
     - Class: 114
-      Script: {instanceID: 5060}
+      Script: {instanceID: 4976}
     - Class: 114
-      Script: {instanceID: 5482}
+      Script: {instanceID: 5062}
     - Class: 114
-      Script: {instanceID: 5524}
+      Script: {instanceID: 5484}
     - Class: 114
-      Script: {instanceID: 5670}
+      Script: {instanceID: 5526}
     - Class: 114
-      Script: {instanceID: 5820}
+      Script: {instanceID: 5672}
     - Class: 114
-      Script: {instanceID: 5852}
+      Script: {instanceID: 5822}
     - Class: 114
-      Script: {instanceID: 5984}
+      Script: {instanceID: 5854}
     - Class: 114
-      Script: {instanceID: 6078}
+      Script: {instanceID: 5986}
+    - Class: 114
+      Script: {instanceID: 6080}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -271,6 +281,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -286,25 +298,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4806}
     - Class: 114
-      Script: {instanceID: 4974}
+      Script: {instanceID: 4976}
     - Class: 114
-      Script: {instanceID: 5060}
+      Script: {instanceID: 5062}
     - Class: 114
-      Script: {instanceID: 5482}
+      Script: {instanceID: 5484}
     - Class: 114
-      Script: {instanceID: 5524}
+      Script: {instanceID: 5526}
     - Class: 114
-      Script: {instanceID: 5670}
+      Script: {instanceID: 5672}
     - Class: 114
-      Script: {instanceID: 5820}
+      Script: {instanceID: 5822}
     - Class: 114
-      Script: {instanceID: 5852}
+      Script: {instanceID: 5854}
     - Class: 114
-      Script: {instanceID: 5984}
+      Script: {instanceID: 5986}
     - Class: 114
-      Script: {instanceID: 6078}
+      Script: {instanceID: 6080}
     - Class: 114
-      Script: {instanceID: 6852}
+      Script: {instanceID: 6854}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -876,6 +888,12 @@ ScriptsOnlyBuild:
     className: UnityOnTriggerExitMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 1b3b19e19ded47c8bd81d28528e2c813
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MusicController
+  - hash:
+      serializedVersion: 2
       Hash: 1b4a83f2a2f1a4def12cdc9223cce72c
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -1170,6 +1188,12 @@ ScriptsOnlyBuild:
     className: UnityOnMoveMessageListener
   - hash:
       serializedVersion: 2
+      Hash: 8dc2237bb3530d9928c67bd988337c7e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ObjectiveTracker
+  - hash:
+      serializedVersion: 2
       Hash: be140ea01a11255b651c097661ac55b1
     assemblyName: Unity.Timeline
     namespaceName: UnityEngine.Timeline
@@ -1258,15 +1282,9 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 8dc2237bb3530d9928c67bd988337c7e
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: ObjectiveTracker
   platform: 19
   scenePathNames:
   - Assets/Scenes/TitleScreen.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/WinScene.unity
-  playerPath: C:/Users/grant/Desktop/RL/Rocket League Pt. 2.exe
+  playerPath: C:/Users/grant/Documents/New folder/Rocket League Pt. 2.exe

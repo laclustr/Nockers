@@ -94,9 +94,9 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: ButtonController
     methodName: LoadSampleScene
-  - assembly: UnityEngine.AudioModule
-    fullTypeName: UnityEngine.AudioSource
-    methodName: Play
+  - assembly: Assembly-CSharp
+    fullTypeName: MusicController
+    methodName: PlaySecondSong
   - assembly: Assembly-CSharp
     fullTypeName: DisableControlsImage
     methodName: EnableImage
@@ -280,6 +280,8 @@ ScriptsOnlyBuild:
     - Class: 28
       Script: {instanceID: 0}
     - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}

@@ -318,6 +318,7 @@
 "Assets/Scripts/InputManager.cs"
 "Assets/Scripts/LoadSceneButton.cs"
 "Assets/Scripts/MenuButton.cs"
+"Assets/Scripts/MusicController.cs"
 "Assets/Scripts/NPCCarManager.cs"
 "Assets/Scripts/NPCVehicle.cs"
 "Assets/Scripts/ObjectiveTracker.cs"
