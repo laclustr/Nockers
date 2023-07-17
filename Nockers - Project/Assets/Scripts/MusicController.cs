@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicController : MonoBehaviour
@@ -22,17 +23,31 @@ public class MusicController : MonoBehaviour
         DontDestroyOnLoad(gameObject); // Make the GameObject persistent across scenes
 
         audioSource = GetComponent<AudioSource>();
-        PlayFirstSong();
+        PlayCorrectSong();
+    }
+
+    void PlayCorrectSong()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (sceneName == "WinScene" || sceneName == "TitleScreen")
+        {
+            PlayFirstSong();
+        }
+        else
+        {
+            PlaySecondSong();
+        }
     }
 
     void PlayFirstSong()
     {
+        audioSource.Stop();
         audioSource.clip = firstSong;
         audioSource.loop = true;
         audioSource.Play();
     }
 
-    public void PlaySecondSong()
+    void PlaySecondSong()
     {
         audioSource.Stop();
         audioSource.clip = secondSong;
@@ -40,11 +55,13 @@ public class MusicController : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PlayFirstSongFromBeginning()
+    void Start()
     {
-        audioSource.Stop();
-        audioSource.clip = firstSong;
-        audioSource.loop = true;
-        audioSource.Play();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlayCorrectSong();
     }
 }
