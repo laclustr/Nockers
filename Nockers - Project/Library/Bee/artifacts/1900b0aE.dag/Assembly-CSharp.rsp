@@ -374,6 +374,7 @@
 "Assets/Scripts/ShowControls.cs"
 "Assets/Scripts/ShowControlsButton.cs"
 "Assets/Scripts/ShowCursor.cs"
+"Assets/Scripts/StopwatchController.cs"
 "Assets/Scripts/WinCondition.cs"
 -langversion:9.0
 

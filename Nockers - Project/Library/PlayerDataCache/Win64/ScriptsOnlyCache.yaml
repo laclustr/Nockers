@@ -77,6 +77,12 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
+    fullTypeName: DisableControlsImage
+    methodName: EnableImage
+  - assembly: Assembly-CSharp
+    fullTypeName: ShowControls
+    methodName: EnableImage
+  - assembly: Assembly-CSharp
     fullTypeName: ShowControls
     methodName: EnableImage
   - assembly: Assembly-CSharp
@@ -160,21 +166,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3942}
     - Class: 114
-      Script: {instanceID: 4976}
+      Script: {instanceID: 4980}
     - Class: 114
-      Script: {instanceID: 5088}
+      Script: {instanceID: 5092}
     - Class: 114
-      Script: {instanceID: 5226}
+      Script: {instanceID: 5230}
     - Class: 114
-      Script: {instanceID: 5234}
+      Script: {instanceID: 5238}
     - Class: 114
-      Script: {instanceID: 5526}
+      Script: {instanceID: 5530}
     - Class: 114
-      Script: {instanceID: 5672}
+      Script: {instanceID: 5676}
     - Class: 114
-      Script: {instanceID: 5986}
+      Script: {instanceID: 5990}
     - Class: 114
-      Script: {instanceID: 6964}
+      Script: {instanceID: 6968}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -235,23 +241,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4956}
     - Class: 114
-      Script: {instanceID: 4976}
+      Script: {instanceID: 4980}
     - Class: 114
-      Script: {instanceID: 5062}
+      Script: {instanceID: 5066}
     - Class: 114
-      Script: {instanceID: 5484}
+      Script: {instanceID: 5488}
     - Class: 114
-      Script: {instanceID: 5526}
+      Script: {instanceID: 5530}
     - Class: 114
-      Script: {instanceID: 5672}
+      Script: {instanceID: 5676}
     - Class: 114
-      Script: {instanceID: 5822}
+      Script: {instanceID: 5826}
     - Class: 114
-      Script: {instanceID: 5854}
+      Script: {instanceID: 5858}
     - Class: 114
-      Script: {instanceID: 5986}
+      Script: {instanceID: 5990}
     - Class: 114
-      Script: {instanceID: 6080}
+      Script: {instanceID: 6084}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -298,25 +304,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 4806}
     - Class: 114
-      Script: {instanceID: 4976}
+      Script: {instanceID: 4980}
     - Class: 114
-      Script: {instanceID: 5062}
+      Script: {instanceID: 5066}
     - Class: 114
-      Script: {instanceID: 5484}
+      Script: {instanceID: 5488}
     - Class: 114
-      Script: {instanceID: 5526}
+      Script: {instanceID: 5530}
     - Class: 114
-      Script: {instanceID: 5672}
+      Script: {instanceID: 5676}
     - Class: 114
-      Script: {instanceID: 5822}
+      Script: {instanceID: 5826}
     - Class: 114
-      Script: {instanceID: 5854}
+      Script: {instanceID: 5858}
     - Class: 114
-      Script: {instanceID: 5986}
+      Script: {instanceID: 5990}
     - Class: 114
-      Script: {instanceID: 6080}
+      Script: {instanceID: 6084}
     - Class: 114
-      Script: {instanceID: 6854}
+      Script: {instanceID: 6858}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1287,4 +1293,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/TitleScreen.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/WinScene.unity
-  playerPath: C:/Users/grant/Documents/New folder/Rocket League Pt. 2.exe
+  playerPath: C:/Users/grant/Documents/Nockers/Releases - Beta/1st Rendition/Nockers
+    - 2nd Rendition (Win64)/Rocket League Pt. 2.exe
