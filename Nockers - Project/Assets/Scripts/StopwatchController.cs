@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.IO;
+using System.Linq;
 
 public class StopwatchController : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class StopwatchController : MonoBehaviour
         {
             StartTimer();
         }
-        else if (scene.name == "WinScene")
+        else if (scene.name == "WinScene" && SceneManager.GetActiveScene().name == "SampleScene")
         {
             StopTimer();
             SaveTopScore();
@@ -76,6 +77,11 @@ public class StopwatchController : MonoBehaviour
 
     private void SaveTopScore()
     {
+        if (SceneManager.GetActiveScene().name != "SampleScene")
+        {
+            return;
+        }
+
         string logDirectory = Path.Combine(Application.dataPath, logFolderPath);
         if (!Directory.Exists(logDirectory))
         {

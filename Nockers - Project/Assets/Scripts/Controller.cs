@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Controller : MonoBehaviour
     private float shiftSpeedMultiplier = 1.2f; // Adjust this value to change the speed increase
     private bool shiftKeyPressed = false;
     private int npcCarCount;
+    private float mKeyTimer = 0f;
+    private float mKeyHoldDuration = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -68,11 +71,30 @@ public class Controller : MonoBehaviour
             fKeyHeld = false;
             fKeyTimer = 0f;
         }
+
+        if (Input.GetKey(KeyCode.M))
+        {
+            mKeyTimer += Time.deltaTime;
+
+            if (mKeyTimer >= mKeyHoldDuration)
+            {
+                LoadTitleScene();
+            }
+        }
+        else
+        {
+            mKeyTimer = 0f;
+        }
     }
 
     void RespawnCar()
     {
         transform.position = startingPosition;
         transform.rotation = Quaternion.identity;
+    }
+
+    void LoadTitleScene()
+    {
+        SceneManager.LoadScene("TitleScreen");
     }
 }

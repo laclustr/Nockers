@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - Controller
     - CursorHider
     - DisableControlsImage
+    - DontDestroyCanvas
     - ExitButton
     - FollowTank
     - InputManager
@@ -16,6 +17,7 @@ ScriptsOnlyBuild:
     - ObjectiveTracker
     - PlayButton
     - ShowControls
+    - StopwatchController
     - Unity.FPS.UI.FramerateCounter
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
@@ -23,12 +25,10 @@ ScriptsOnlyBuild:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -56,7 +56,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Sprite
     - TMPro.TMP_SpriteCharacter
     - TMPro.TMP_SpriteGlyph
-    - TMPro.TMP_Style
     - TMPro.VertexGradient
     UnityEngine.CoreModule:
     - UnityEngine.Events.ArgumentCache
@@ -174,13 +173,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5238}
     - Class: 114
-      Script: {instanceID: 5530}
+      Script: {instanceID: 5532}
     - Class: 114
-      Script: {instanceID: 5676}
+      Script: {instanceID: 5678}
     - Class: 114
-      Script: {instanceID: 5990}
+      Script: {instanceID: 5992}
     - Class: 114
-      Script: {instanceID: 6968}
+      Script: {instanceID: 6972}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -223,8 +222,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1592}
     - Class: 114
-      Script: {instanceID: 2168}
-    - Class: 114
       Script: {instanceID: 2580}
     - Class: 114
       Script: {instanceID: 2682}
@@ -245,19 +242,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5066}
     - Class: 114
-      Script: {instanceID: 5488}
+      Script: {instanceID: 5308}
     - Class: 114
-      Script: {instanceID: 5530}
+      Script: {instanceID: 5490}
     - Class: 114
-      Script: {instanceID: 5676}
+      Script: {instanceID: 5532}
     - Class: 114
-      Script: {instanceID: 5826}
+      Script: {instanceID: 5678}
     - Class: 114
-      Script: {instanceID: 5858}
+      Script: {instanceID: 5828}
     - Class: 114
-      Script: {instanceID: 5990}
+      Script: {instanceID: 5860}
     - Class: 114
-      Script: {instanceID: 6084}
+      Script: {instanceID: 5992}
+    - Class: 114
+      Script: {instanceID: 6086}
+    - Class: 114
+      Script: {instanceID: 6478}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -308,21 +309,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5066}
     - Class: 114
-      Script: {instanceID: 5488}
+      Script: {instanceID: 5490}
     - Class: 114
-      Script: {instanceID: 5530}
+      Script: {instanceID: 5532}
     - Class: 114
-      Script: {instanceID: 5676}
+      Script: {instanceID: 5678}
     - Class: 114
-      Script: {instanceID: 5826}
+      Script: {instanceID: 5828}
     - Class: 114
-      Script: {instanceID: 5858}
+      Script: {instanceID: 5860}
     - Class: 114
-      Script: {instanceID: 5990}
+      Script: {instanceID: 5992}
     - Class: 114
-      Script: {instanceID: 6084}
+      Script: {instanceID: 6086}
     - Class: 114
-      Script: {instanceID: 6858}
+      Script: {instanceID: 6862}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -960,6 +961,12 @@ ScriptsOnlyBuild:
     className: FollowTank
   - hash:
       serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: DontDestroyCanvas
+  - hash:
+      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.State
     namespaceName: Unity.VisualScripting
@@ -1096,6 +1103,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnCollisionExitMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: StopwatchController
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1293,5 +1306,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/TitleScreen.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/WinScene.unity
-  playerPath: C:/Users/grant/Documents/Nockers/Releases - Beta/1st Rendition/Nockers
-    - 2nd Rendition (Win64)/Rocket League Pt. 2.exe
+  playerPath: C:/Users/grant/Downloads/fe/Rocket League Pt. 2.exe
