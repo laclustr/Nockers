@@ -1,21 +1,23 @@
-using System;
-using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System.IO;
 
 public class StopwatchController : MonoBehaviour
 {
     private bool isTimerRunning = false;
     private float elapsedTime = 0f;
-    private float topScore = Mathf.Infinity;
-    private string logFileName = "top_score_log.txt";
+    private float topScore = float.MaxValue;
+    private string logFolderPath = "Logs";
+    private string logFileName = "topscore.txt";
+    private string logFilePath;
 
-    public GameObject hudText;
+    private TextMeshProUGUI hudText;
 
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
-        LoadTopScore();
+        logFilePath = Path.Combine(logFolderPath, logFileName);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -24,13 +26,14 @@ public class StopwatchController : MonoBehaviour
         {
             StartTimer();
         }
-        else
+        else if (scene.name == "WinScene")
         {
             StopTimer();
-            if (scene.name == "WinScene")
-            {
-                SaveTopScore();
-            }
+            SaveTopScore();
+        }
+        else if (scene.name == "TitleScreen")
+        {
+            // Do nothing
         }
     }
 
@@ -52,36 +55,38 @@ public class StopwatchController : MonoBehaviour
     private void StopTimer()
     {
         isTimerRunning = false;
+        if (elapsedTime < topScore)
+        {
+            topScore = elapsedTime;
+        }
     }
 
     private void UpdateHUD()
     {
-        TimeSpan timeSpan = TimeSpan.FromSeconds(elapsedTime);
-        string currentTime = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Hours, timeSpan.Minutes, timeSpan.Seconds);
-        hudText.GetComponent<TextMesh>().text = "Time: " + currentTime;
-    }
-
-    private void LoadTopScore()
-    {
-        if (File.Exists(logFileName))
+        if (hudText == null)
         {
-            string[] lines = File.ReadAllLines(logFileName);
-            if (lines.Length > 0)
-            {
-                if (float.TryParse(lines[0], out float savedTopScore))
-                {
-                    topScore = savedTopScore;
-                }
-            }
+            hudText = FindObjectOfType<TextMeshProUGUI>();
+        }
+
+        if (hudText != null)
+        {
+            hudText.text = "Time: " + elapsedTime.ToString("F2");
         }
     }
 
     private void SaveTopScore()
     {
-        if (elapsedTime < topScore)
+        string logDirectory = Path.Combine(Application.dataPath, logFolderPath);
+        if (!Directory.Exists(logDirectory))
         {
-            topScore = elapsedTime;
-            File.WriteAllText(logFileName, topScore.ToString());
+            Directory.CreateDirectory(logDirectory);
+        }
+
+        string fullLogFilePath = Path.Combine(logDirectory, logFileName);
+
+        using (StreamWriter writer = new StreamWriter(fullLogFilePath))
+        {
+            writer.WriteLine("Top Score: " + topScore.ToString("F2"));
         }
     }
 }

@@ -359,6 +359,7 @@
 "Assets/Scripts/Controller.cs"
 "Assets/Scripts/CursorHider.cs"
 "Assets/Scripts/DisableControlsImage.cs"
+"Assets/Scripts/DontDestroyCanvas.cs"
 "Assets/Scripts/ExitButton.cs"
 "Assets/Scripts/FollowTank.cs"
 "Assets/Scripts/FramerateCounter.cs"
