@@ -1306,4 +1306,5 @@ ScriptsOnlyBuild:
   - Assets/Scenes/TitleScreen.unity
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/WinScene.unity
-  playerPath: C:/Users/grant/Downloads/fe/Rocket League Pt. 2.exe
+  playerPath: C:/Users/grant/Documents/Nockers/Releases - Beta/3rd Rendition/Nockers
+    - 3rd Rendition/Rocket League Pt. 2.exe
