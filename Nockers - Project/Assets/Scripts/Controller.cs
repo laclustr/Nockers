@@ -33,6 +33,15 @@ public class Controller : MonoBehaviour
     void Update()
     {
         // Debug.Log(Input.GetAxis("Vertical"));
+        if (transform.position.y > 4f || transform.position.y < -2f)
+        {
+            speed = 0f; // Prevent acceleration when car is off the road
+        }
+        else
+        {
+            speed = originalSpeed; // Restore speed when car is on the road
+        }
+
         transform.Translate(0, RocketBoosters * Input.GetAxis("Jump") * Time.deltaTime, speed * Input.GetAxis("Vertical") * Time.deltaTime);
         transform.Rotate(0, steerSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0);
 

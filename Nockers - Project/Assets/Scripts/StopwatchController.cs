@@ -1,41 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.IO;
-using System.Linq;
 
 public class StopwatchController : MonoBehaviour
 {
     private bool isTimerRunning = false;
     private float elapsedTime = 0f;
     private float topScore = float.MaxValue;
-    private string logFolderPath = "Logs";
+    private string logFolderPath = "StopwatchLogs";
     private string logFileName = "topscore.txt";
     private string logFilePath;
-
-    private TextMeshProUGUI hudText;
 
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         logFilePath = Path.Combine(logFolderPath, logFileName);
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "SampleScene")
-        {
-            StartTimer();
-        }
-        else if (scene.name == "WinScene" && SceneManager.GetActiveScene().name == "SampleScene")
-        {
-            StopTimer();
-            SaveTopScore();
-        }
-        else if (scene.name == "TitleScreen")
-        {
-            // Do nothing
-        }
     }
 
     private void Update()
@@ -44,6 +26,24 @@ public class StopwatchController : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             UpdateHUD();
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "SampleScene")
+        {
+            StartTimer();
+        }
+        else if (scene.name == "WinScene" && SceneManager.GetActiveScene().name == "WinScene")
+        {
+            SaveTopScore();
+            StopTimer();
+            elapsedTime = 0f; // Reset the timer after logging the top score
+        }
+        else if (scene.name == "TitleScreen")
+        {
+            // Do nothing
         }
     }
 
@@ -64,11 +64,7 @@ public class StopwatchController : MonoBehaviour
 
     private void UpdateHUD()
     {
-        if (hudText == null)
-        {
-            hudText = FindObjectOfType<TextMeshProUGUI>();
-        }
-
+        TextMeshProUGUI hudText = FindObjectOfType<TextMeshProUGUI>();
         if (hudText != null)
         {
             hudText.text = "Time: " + elapsedTime.ToString("F2");
@@ -77,22 +73,56 @@ public class StopwatchController : MonoBehaviour
 
     private void SaveTopScore()
     {
-        if (SceneManager.GetActiveScene().name != "SampleScene")
-        {
-            return;
-        }
+        Debug.Log("Log File Path: " + logFilePath);
 
-        string logDirectory = Path.Combine(Application.dataPath, logFolderPath);
+        Debug.Log("Log File Path: " + logFilePath);
+        string logDirectory = Path.Combine(Application.persistentDataPath, logFolderPath);
+        string fullLogFilePath = Path.Combine(logDirectory, logFileName);
+
         if (!Directory.Exists(logDirectory))
         {
             Directory.CreateDirectory(logDirectory);
+            Debug.Log("Log File Path: " + logFilePath);
+
         }
 
-        string fullLogFilePath = Path.Combine(logDirectory, logFileName);
-
-        using (StreamWriter writer = new StreamWriter(fullLogFilePath))
+        if (!File.Exists(fullLogFilePath))
         {
-            writer.WriteLine("Top Score: " + topScore.ToString("F2"));
+            Debug.Log("Log File Path: " + logFilePath);
+            // Create a new log file with initial top score
+            using (StreamWriter writer = new StreamWriter(fullLogFilePath))
+            {
+                writer.WriteLine("Top Score: 999999.99");
+                Debug.Log("Log File Path: " + logFilePath);
+            }
+        }
+
+        string[] logLines = File.ReadAllLines(fullLogFilePath);
+
+        if (logLines.Length >= 1)
+        {
+            Debug.Log("Log File Path: " + logFilePath);
+            string topScoreLine = logLines[0];
+            string[] topScoreParts = topScoreLine.Split(' ');
+            float existingTopScore;
+
+            if (float.TryParse(topScoreParts[2], out existingTopScore))
+            {
+                Debug.Log("Log File Path: " + logFilePath);
+                if (elapsedTime < existingTopScore)
+                {
+                    Debug.Log("Log File Path: " + fullLogFilePath);
+                    topScore = elapsedTime;
+
+                    // Overwrite the log file with the current top score
+                    using (StreamWriter writer = new StreamWriter(fullLogFilePath))
+                    {
+                        Debug.Log("Log File Path: " + fullLogFilePath);
+                        writer.WriteLine("Top Score: " + topScore.ToString("F2"));
+                    }
+                }
+
+            }
         }
     }
 }
